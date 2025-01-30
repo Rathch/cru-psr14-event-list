@@ -65,6 +65,13 @@ final class EventListCommand extends Command
                 null,
             )
             ->addOption(
+                'show-missing',
+                '',
+                InputOption::VALUE_NONE,
+                'List all PSR-14 with missing documentation',
+                null,
+            )
+            ->addOption(
                 'vertical-table',
                 '',
                 InputOption::VALUE_NONE,
@@ -145,6 +152,13 @@ final class EventListCommand extends Command
 
         if (count($errors) > 0) {
             $finalStats[] = '<error>' . count($errors) . '</error> missing doc links.';
+            if ($input->getOption('show-missing') === true) {
+                $output->writeln('');
+                $output->writeln('<info>Missing doc links:</info>');
+                foreach ($errors as $missingEvent => $_) {
+                    $output->writeln('- ' . $missingEvent);
+                }
+            }
         }
 
         $output->writeln('');
