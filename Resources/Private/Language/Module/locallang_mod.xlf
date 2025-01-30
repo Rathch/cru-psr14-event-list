@@ -3,17 +3,8 @@
 	<file source-language="en" original="EXT:psr14_event_list/Resources/Private/Language/Module/locallang_mod.xlf" datatype="plaintext" product-name="examples" date="2022-10-20T18:44:02+02:00">
 		<header/>
 		<body>
-            <trans-unit id="mlang_labels_tabdescr" resname="mlang_labels_tabdescr">
-				<source>Shows all TYPO3 Core PSR-14 Events</source>
-			</trans-unit>
-			<trans-unit id="mlang_labels_tablabel" resname="mlang_labels_tablabel">
-				<source>Event List</source>
-			</trans-unit>
-			<trans-unit id="mlang_tabs_tab" resname="mlang_tabs_tab">
-				<source>PSR14 Event List</source>
-			</trans-unit>
 			<trans-unit id="overview_title">
-                <source>Overview of Core PSR-14 Events in TYPO3</source>
+                <source>Overview of TYPO3 Core PSR-14 Events</source>
             </trans-unit>
 
             <trans-unit id="overview_intro">
@@ -23,18 +14,22 @@
             <trans-unit id="overview_details">
                 <source>This overview provides a complete list of all core events triggered in TYPO3, along with related information and documentation for each event. Each event is linked to the official TYPO3 documentation, so you can learn more about the event and how to use it.</source>
             </trans-unit>
-			<trans-unit id="show_events">
-                <source>to show the list switch the dropdown to the list view</source>
+
+            <trans-unit id="documentation_text">
+                <source>For an in-depth explanation of PSR-14 and the core events in TYPO3, you can visit the official overview of core events in the TYPO3 documentation. There you will find a detailed description of the various events and examples of how to work with them.</source>
             </trans-unit>
+
+            <trans-unit id="show_events">
+                <source>To show the list, switch the action menu dropdown to "List".</source>
+            </trans-unit>
+
             <trans-unit id="documentation_link">
                 <source>TYPO3 documentation</source>
             </trans-unit>
-			<trans-unit id="documentation_text">
-                <source>For an in-depth explanation of PSR-14 and the core events in TYPO3, you can visit the official overview of core events in the TYPO3 documentation. There you will find a detailed description of the various events and examples of how to work with them.</source>
+
+            <trans-unit id="loading_warning">
+                <source>Warning: First load of the list may take a while!</source>
             </trans-unit>
-			<trans-unit id="loading_warning">
-				<source>Warning the first load of the list may take a wile!</source>
-			</trans-unit>
 		</body>
 	</file>
 </xliff>

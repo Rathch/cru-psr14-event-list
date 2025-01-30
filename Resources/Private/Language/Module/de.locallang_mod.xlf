@@ -1,41 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-	<file source-language="en" target-language="de"  original="EXT:psr14_event_list/Resources/Private/Language/AdminModule/de.locallang_mod.xlf" datatype="plaintext" product-name="examples" date="2022-10-20T18:44:02+02:00">
+	<file source-language="en" target-language="de"  original="EXT:psr14_event_list/Resources/Private/Language/Module/de.locallang_mod.xlf" datatype="plaintext" product-name="examples" date="2022-10-20T18:44:02+02:00">
 		<header/>
 		<body>
 			<trans-unit id="overview_title">
-                <source>Übersicht der Core PSR-14 Events in TYPO3</source>
-                <target>Overview of Core PSR-14 Events in TYPO3</target>
+                <target>Übersicht der TYPO3 Core PSR-14 Events</target>
+                <source>Overview of TYPO3 Core PSR-14 Events</source>
             </trans-unit>
 
             <trans-unit id="overview_intro">
-                <source>Dieses Backend-Modul bietet eine detaillierte Übersicht über alle verfügbaren Core PSR-14-Events in TYPO3. PSR-14 ist eine Standardisierung für Event-Dispatching und bietet eine flexible Möglichkeit, die Logik innerhalb von TYPO3 zu erweitern, ohne den Core-Code zu verändern. In TYPO3 wird PSR-14 verwendet, um Ereignisse zu veröffentlichen, auf die Erweiterungen und benutzerdefinierte Logik reagieren können.</source>
-                <target>This backend module provides a detailed overview of all available core PSR-14 events in TYPO3. PSR-14 is a standardization for event dispatching and offers a flexible way to extend the logic within TYPO3 without modifying core code. In TYPO3, PSR-14 is used to publish events that extensions and custom logic can react to.</target>
+                <target>Dieses Backend-Modul bietet eine detailierte Übersicht über alle verfügbaren Core PSR-14-Events in TYPO3. PSR-14 ist eine Standardisierung für Event-Dispatching und bietet eine flexible Möglichkeit, die Logik innerhalb von TYPO3 zu erweitern, ohne den Core-Code zu verändern. In TYPO3 wird PSR-14 verwendet, um Ereignisse zu veröffentlichen, auf die Erweiterungen und benutzerdefinierte Logik reagieren können.</target>
+                <source>This backend module provides a detailed overview of all available core PSR-14 events in TYPO3. PSR-14 is a standardization for event dispatching and offers a flexible way to extend the logic within TYPO3 without modifying core code. In TYPO3, PSR-14 is used to publish events that extensions and custom logic can react to.</source>
             </trans-unit>
 
             <trans-unit id="overview_details">
-                <source>In dieser Übersicht findest du eine vollständige Liste aller Core-Events, die in TYPO3 ausgelöst werden, sowie zugehörige Informationen und Dokumentationen zu den jeweiligen Events. Jedes Event wird mit Links zur offiziellen TYPO3-Dokumentation versehen, sodass du mehr über das Event und seine Verwendung erfahren kannst.</source>
-                <target>This overview provides a complete list of all core events triggered in TYPO3, along with related information and documentation for each event. Each event is linked to the official TYPO3 documentation, so you can learn more about the event and how to use it.</target>
+                <target>In dieser Übersicht findest du eine vollständige Liste aller Core-Events, die in TYPO3 ausgelöst werden, sowie zugehörige Informationen und Dokumentations-Verweise zu den jeweiligen Events. Jedes Event wird mit Links zur offiziellen TYPO3-Dokumentation versehen, sodass du mehr über das Event und seine Verwendung erfahren kannst.</target>
+                <source>This overview provides a complete list of all core events triggered in TYPO3, along with related information and documentation for each event. Each event is linked to the official TYPO3 documentation, so you can learn more about the event and how to use it.</source>
             </trans-unit>
 
             <trans-unit id="documentation_text">
-                <source>Für eine ausführliche Erklärung zu PSR-14 und den Core-Events in TYPO3, kannst du die offizielle Übersicht der Core-Events in der TYPO3-Dokumentation besuchen. Dort findest du eine detaillierte Beschreibung der verschiedenen Events und Beispiele, wie du mit ihnen arbeiten kannst.</source>
-                <target>For an in-depth explanation of PSR-14 and the core events in TYPO3, you can visit the official overview of core events in the TYPO3 documentation. There you will find a detailed description of the various events and examples of how to work with them.</target>
+                <target>Für eine ausführliche Erklärung zu PSR-14 und den Core-Events in TYPO3, kannst du die offizielle Übersicht der Core-Events in der TYPO3-Dokumentation besuchen. Dort findest du eine detaillierte Beschreibung der verschiedenen Events und Beispiele, wie du mit ihnen arbeiten kannst.</target>
+                <source>For an in-depth explanation of PSR-14 and the core events in TYPO3, you can visit the official overview of core events in the TYPO3 documentation. There you will find a detailed description of the various events and examples of how to work with them.</source>
             </trans-unit>
 
             <trans-unit id="show_events">
-                <source>Um die Liste anzuzeigen, wechsle zum Listen-View im Dropdown</source>
-                <target>to show the list switch the dropdown to the list view</target>
+                <target>Um die Liste anzuzeigen, wechsele im Menü-Dropdown zu "Liste".</target>
+                <source>To show the list, switch the action menu dropdown to "List".</source>
             </trans-unit>
 
             <trans-unit id="documentation_link">
-                <source>TYPO3 Dokumentation</source>
-                <target>TYPO3 documentation</target>
+                <target>TYPO3 Dokumentation</target>
+                <source>TYPO3 documentation</source>
             </trans-unit>
 
             <trans-unit id="loading_warning">
-                <source>Warnung: Der erste Ladevorgang der Liste kann eine Weile dauern!</source>
-                <target>Warning the first load of the list may take a while!</target>
+                <target>Warnung: Der erste Ladevorgang der Liste kann eine Weile dauern!</target>
+                <source>Warning: First load of the list may take a while!</source>
             </trans-unit>
 		</body>
 	</file>
