@@ -1,9 +1,6 @@
 <?php
 
-
-
 use Cru\Psr14EventList\Backend\Controller\AdminModuleController;
-
 
 return [
     'web_examples' => [
