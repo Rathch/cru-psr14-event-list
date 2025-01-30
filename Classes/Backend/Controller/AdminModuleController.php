@@ -17,19 +17,15 @@ declare(strict_types=1);
 
 namespace Cru\Psr14EventList\Backend\Controller;
 
-use TYPO3\CMS\Core\Imaging\Icon;
 use Psr\Http\Message\ResponseInterface;
-use TYPO3\CMS\Core\Imaging\IconFactory;
 use TYPO3\CMS\Backend\Routing\UriBuilder;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Backend\Attribute\AsController;
 use TYPO3\CMS\Backend\Template\ModuleTemplate;
 use TYPO3\CMS\Core\Localization\LanguageService;
-use TYPO3\CMS\Backend\Template\Components\ButtonBar;
 use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
 use Cru\Psr14EventList\Service\ProvideEventListService;
-use TYPO3\CMS\Core\Authentication\BackendUserAuthentication;
 
 #[AsController]
 final class AdminModuleController
