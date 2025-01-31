@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<phpmd-baseline>
+  <violation rule="PHPMD\Rule\Naming\LongVariable" file="Classes/Backend/Controller/AdminModuleController.php"/>
+  <violation rule="PHPMD\Rule\CleanCode\StaticAccess" file="Classes/Backend/Controller/AdminModuleController.php"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="Classes/Backend/Controller/AdminModuleController.php" method="renderTree"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="Classes/Backend/Controller/AdminModuleController.php" method="renderTree"/>
+  <violation rule="PHPMD\Rule\Naming\LongVariable" file="Classes/Command/EventListCommand.php"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="Classes/Command/EventListCommand.php" method="execute"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="Classes/Command/EventListCommand.php" method="execute"/>
+  <violation rule="PHPMD\Rule\CleanCode\ElseExpression" file="Classes/Command/EventListCommand.php"/>
+  <violation rule="PHPMD\Rule\UnusedLocalVariable" file="Classes/Command/EventListCommand.php"/>
+  <violation rule="PHPMD\Rule\Controversial\CamelCaseVariableName" file="Classes/Command/EventListCommand.php"/>
+  <violation rule="PHPMD\Rule\CleanCode\BooleanArgumentFlag" file="Classes/Service/ProvideEventListService.php"/>
+  <violation rule="PHPMD\Rule\CyclomaticComplexity" file="Classes/Service/ProvideEventListService.php" method="getConfiguration"/>
+  <violation rule="PHPMD\Rule\Design\NpathComplexity" file="Classes/Service/ProvideEventListService.php" method="getConfiguration"/>
+  <violation rule="PHPMD\Rule\Design\LongMethod" file="Classes/Service/ProvideEventListService.php" method="getConfiguration"/>
+  <violation rule="PHPMD\Rule\CleanCode\StaticAccess" file="Classes/Service/ProvideEventListService.php"/>
+  <violation rule="PHPMD\Rule\CleanCode\ElseExpression" file="Classes/Service/ProvideEventListService.php"/>
+</phpmd-baseline>
