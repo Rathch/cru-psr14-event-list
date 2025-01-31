@@ -1,19 +1,23 @@
 <?php
 
-declare(strict_types=1);
+// SPDX-FileCopyrightText: 2025 Christian Rath-Ulrich, Garvin Hicking
+//
+// SPDX-License-Identifier: GPL-3.0-or-later
 
 /*
- * This file is part of the TYPO3 CMS project.
- *
- * It is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, either version 2
- * of the License, or any later version.
- *
- * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- * The TYPO3 project - inspiring people to share!
- */
+  * This file is part of the package cru/psr14-event-list.
+  *
+  * Copyright (C) 2024 - 2025 Christian Rath-Ulrich, Garvin Hicking
+  *
+  * It is free software; you can redistribute it and/or modify it under
+  * the terms of the GNU General Public License, either version 3
+  * of the License, or any later version.
+  *
+  * For the full copyright and license information, please read the
+  * LICENSE file that was distributed with this source code.
+  */
+
+declare(strict_types=1);
 
 namespace Cru\Psr14EventList\Service;
 
@@ -29,13 +33,12 @@ final readonly class ProvideEventListService
     public function __construct(
         private PackageManager $packageManager,
         private Typo3Version $typo3Version,
-    ) {
-    }
+    ) {}
 
     public function getConfiguration(bool $useCache = true, bool $fetchDocs = true, ?OutputInterface $cliOutput = null): array
     {
         $eventClasses = [];
-        $docsUrl = 'https://docs.typo3.org/m/typo3/reference-coreapi/' .  $this->typo3Version->getBranch() . '/en-us/';
+        $docsUrl = 'https://docs.typo3.org/m/typo3/reference-coreapi/' . $this->typo3Version->getBranch() . '/en-us/';
         $docsUrlFallback = 'https://docs.typo3.org/m/typo3/reference-coreapi/main/en-us/';
 
         if ($fetchDocs) {
@@ -48,7 +51,7 @@ final readonly class ProvideEventListService
             $docsCache = [];
             if ($useCache === true
                 && file_exists($cacheFile)
-                && filemtime($cacheFile) < time()-86400
+                && filemtime($cacheFile) < time() - 86400
             ) {
                 $docsCache = json_decode(file_get_contents($cacheFile), true);
                 if ($cliOutput?->isVerbose()) {

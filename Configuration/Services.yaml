@@ -11,5 +11,3 @@ services:
       - name: console.command
         command: 'cru:list-psr14-events'
         description: 'Shows available PSR-14 Events'
-
-  

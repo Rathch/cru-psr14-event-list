@@ -1,19 +1,24 @@
 <?php
 
-declare(strict_types=1);
+// SPDX-FileCopyrightText: 2025 Garvin Hicking
+//
+// SPDX-License-Identifier: GPL-3.0-or-later
 
 /*
- * This file is part of the TYPO3 CMS project.
- *
- * It is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, either version 2
- * of the License, or any later version.
- *
- * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- * The TYPO3 project - inspiring people to share!
- */
+  * This file is part of the package cru/psr14-event-list.
+  *
+  * Copyright (C) 2024 - 2025 Garvin Hicking
+  *
+  * It is free software; you can redistribute it and/or modify it under
+  * the terms of the GNU General Public License, either version 3
+  * of the License, or any later version.
+  *
+  * For the full copyright and license information, please read the
+  * LICENSE file that was distributed with this source code.
+  */
+
+declare(strict_types=1);
+
 
 namespace Cru\Psr14EventList\Command;
 
@@ -163,7 +168,6 @@ final class EventListCommand extends Command
 
         $output->writeln('');
         $output->writeln('<info>Total:</info> ' . count($eventList) . ' events. ' . implode(', ', $finalStats));
-
 
         return Command::SUCCESS;
     }

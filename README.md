@@ -1,5 +1,6 @@
 # psr14-event-list Documentation
-
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+![TYPO3](https://typo3-badges.dev/badge/typo3/shields.svg)
 ## Overview
 
 The `psr14-event-list` extension provides a backend module for listing all PSR-14 events from installed packages in TYPO3. This extension helps developers easily identify and access PSR-14 events across the system, and it can be particularly useful for debugging and documentation purposes.

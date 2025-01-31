@@ -1,31 +1,34 @@
 <?php
+// SPDX-FileCopyrightText: 2025 Christian Rath-Ulrich, Garvin Hicking
+//
+// SPDX-License-Identifier: GPL-3.0-or-later
+
+/*
+  * This file is part of the package cru/psr14-event-list.
+  *
+  * Copyright (C) 2024 - 2025 Christian Rath-Ulrich, Garvin Hicking
+  *
+  * It is free software; you can redistribute it and/or modify it under
+  * the terms of the GNU General Public License, either version 3
+  * of the License, or any later version.
+  *
+  * For the full copyright and license information, please read the
+  * LICENSE file that was distributed with this source code.
+  */
 
 declare(strict_types=1);
 
-/*
- * This file is part of the TYPO3 CMS project.
- *
- * It is free software; you can redistribute it and/or modify it under
- * the terms of the GNU General Public License, either version 2
- * of the License, or any later version.
- *
- * For the full copyright and license information, please read the
- * LICENSE.txt file that was distributed with this source code.
- *
- * The TYPO3 project - inspiring people to share!
- */
-
 namespace Cru\Psr14EventList\Backend\Controller;
 
+use Cru\Psr14EventList\Service\ProvideEventListService;
 use Psr\Http\Message\ResponseInterface;
-use TYPO3\CMS\Backend\Routing\UriBuilder;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Backend\Attribute\AsController;
+use TYPO3\CMS\Backend\Routing\UriBuilder;
 use TYPO3\CMS\Backend\Template\ModuleTemplate;
-use TYPO3\CMS\Core\Localization\LanguageService;
 use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
-use Cru\Psr14EventList\Service\ProvideEventListService;
+use TYPO3\CMS\Core\Localization\LanguageService;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 #[AsController]
 final class AdminModuleController
@@ -54,21 +57,21 @@ final class AdminModuleController
                 'controller' => 'Module',
                 'action' => 'index',
                 'route' => 'tx_psr14_event_list_index',
-                'label' => "Index",
+                'label' => 'Index',
             ],
             'list' => [
                 'controller' => 'Module',
                 'action' => 'listCoreEventsAction',
                 'route' => 'tx_psr14_event_list_list',
-                'label' => "List",
-            ]
+                'label' => 'List',
+            ],
         ];
 
         $uriBuilder = GeneralUtility::makeInstance(UriBuilder::class);
 
         foreach ($menuItems as $menuItemConfig) {
             $currentUri = $request->getUri();
-            $action = $menuItemConfig['route']; 
+            $action = $menuItemConfig['route'];
             $uri = $uriBuilder->buildUriFromRoute($action, [$request]);
             $isActive = ($currentUri === $uri);
             $menuItem = $menu->makeMenuItem()
@@ -87,7 +90,7 @@ final class AdminModuleController
         $moduleTemplate = $this->moduleTemplateFactory->create($request);
 
         $this->setUpMenu($request, $moduleTemplate);
-        
+
         $languageService = $this->getLanguageService();
 
         $translations = [
@@ -97,7 +100,7 @@ final class AdminModuleController
             'documentation_link' => $languageService->sL('LLL:EXT:psr14_event_list/Resources/Private/Language/Module/locallang_mod.xlf:documentation_link'),
             'documentation_text' => $languageService->sL('LLL:EXT:psr14_event_list/Resources/Private/Language/Module/locallang_mod.xlf:documentation_text'),
             'loading_warning' => $languageService->sL('LLL:EXT:psr14_event_list/Resources/Private/Language/Module/locallang_mod.xlf:loading_warning'),
-            'show_events' => $languageService->sL('LLL:EXT:psr14_event_list/Resources/Private/Language/Module/locallang_mod.xlf:show_events')
+            'show_events' => $languageService->sL('LLL:EXT:psr14_event_list/Resources/Private/Language/Module/locallang_mod.xlf:show_events'),
         ];
 
         $moduleTemplate->assign('translations', $translations);
