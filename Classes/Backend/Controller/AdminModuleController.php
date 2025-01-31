@@ -2,46 +2,52 @@
 
 declare(strict_types=1);
 
+/*
+ * This file is part of the TYPO3 CMS project.
+ *
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
+ *
+ * The TYPO3 project - inspiring people to share!
+ */
+
 namespace Cru\Psr14EventList\Backend\Controller;
 
-
-use TYPO3\CMS\Core\Imaging\Icon;
 use Psr\Http\Message\ResponseInterface;
-use TYPO3\CMS\Core\Imaging\IconFactory;
 use TYPO3\CMS\Backend\Routing\UriBuilder;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Backend\Attribute\AsController;
 use TYPO3\CMS\Backend\Template\ModuleTemplate;
 use TYPO3\CMS\Core\Localization\LanguageService;
-use TYPO3\CMS\Backend\Template\Components\ButtonBar;
 use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
 use Cru\Psr14EventList\Service\ProvideEventListService;
-use TYPO3\CMS\Core\Authentication\BackendUserAuthentication;
 
 #[AsController]
 final class AdminModuleController
 {
     public function __construct(
         private readonly ModuleTemplateFactory $moduleTemplateFactory,
-        private readonly IconFactory $iconFactory,
-        // ...
+        private readonly ProvideEventListService $provideEventListService,
     ) {}
 
     public function handleRequest(ServerRequestInterface $request): ResponseInterface
     {
         $moduleTemplate = $this->moduleTemplateFactory->create($request);
 
-        $this->setUpMenue($request, $moduleTemplate);
+        $this->setUpMenu($request, $moduleTemplate);
 
         return $this->indexAction($request);
-        
     }
 
-    private function setUpMenue(ServerRequestInterface $request, ModuleTemplate $moduleTemplate): void
+    private function setUpMenu(ServerRequestInterface $request, ModuleTemplate $moduleTemplate): void
     {
         $menu = $moduleTemplate->getDocHeaderComponent()->getMenuRegistry()->makeMenu();
-        $menu->setIdentifier('ExampleModuleMenu');
+        $menu->setIdentifier('cruPsr14EventList');
 
         $menuItems = [
             'index' => [
@@ -59,12 +65,11 @@ final class AdminModuleController
         ];
 
         $uriBuilder = GeneralUtility::makeInstance(UriBuilder::class);
-        //$request = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Http\Request::class);
-        
+
         foreach ($menuItems as $menuItemConfig) {
             $currentUri = $request->getUri();
             $action = $menuItemConfig['route']; 
-            $uri = $uriBuilder->buildUriFromRoute($action,[$request]);
+            $uri = $uriBuilder->buildUriFromRoute($action, [$request]);
             $isActive = ($currentUri === $uri);
             $menuItem = $menu->makeMenuItem()
                             ->setTitle($menuItemConfig['label'])
@@ -81,7 +86,7 @@ final class AdminModuleController
     ): ResponseInterface {
         $moduleTemplate = $this->moduleTemplateFactory->create($request);
 
-        $this->setUpMenue($request, $moduleTemplate);
+        $this->setUpMenu($request, $moduleTemplate);
         
         $languageService = $this->getLanguageService();
 
@@ -104,16 +109,14 @@ final class AdminModuleController
     ): ResponseInterface {
         $moduleTemplate = $this->moduleTemplateFactory->create($request);
 
-        $this->setUpMenue($request, $moduleTemplate);
-
-        $eventList = GeneralUtility::makeInstance(ProvideEventListService::class)->getConfiguration();
-
-        $moduleTemplate->assign('eventList', $eventList);
-        $lableHash = hash('md5', "eventList");
+        $this->setUpMenu($request, $moduleTemplate);
+        $eventList = $this->provideEventListService->getConfiguration();
+        $labelHash = hash('md5', 'eventList');
         $moduleTemplate->assignMultiple([
-            'tree' => $this->renderTree($eventList, $lableHash),
-            'labelHash' => $lableHash,
-            'treeName' => 'Core Events',
+            'eventList' => $eventList,
+            'tree'      => $this->renderTree($eventList, $labelHash),
+            'labelHash' => $labelHash,
+            'treeName'  => 'Core Events',
         ]);
 
         return $moduleTemplate->renderResponse('AdminModule/List');
@@ -124,11 +127,10 @@ final class AdminModuleController
         return $GLOBALS['LANG'];
     }
 
-
     /**
      * We're rendering the trees directly in PHP for two reasons:
-     * * Performance of Fluid is not good enough when dealing with large trees like TCA
-     * * It's a bit hard to deal with the object details in Fluid
+     * - Performance of Fluid is not good enough when dealing with large trees like TCA
+     * - It's a bit hard to deal with the object details in Fluid
      */
     private function renderTree(array|\ArrayObject $tree, string $labelHash, string $incomingIdentifier = ''): string
     {

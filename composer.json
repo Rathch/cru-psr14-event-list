@@ -1,6 +1,6 @@
 {
     "name": "cru/psr14-event-list",
-    "description": "Lists all Core psr 14 events",
+    "description": "Lists all Core PSR-14 events",
     "type": "typo3-cms-extension",
     "authors": [
         {
@@ -12,7 +12,7 @@
         "GPL-2.0-or-later"
     ],
     "require": {
-        "typo3/cms-core": "^12.4 || ^13.0"
+        "typo3/cms-core": "^12.4 || ^13.4 || 14.0.*@dev"
     },
     "autoload": {
         "psr-4": {
