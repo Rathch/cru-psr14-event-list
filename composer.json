@@ -1,6 +1,6 @@
 {
     "name": "cru/psr14-event-list",
-    "description": "Lists all Core psr 14 events",
+    "description": "Lists all psr 14 events",
     "license": [
         "GPL-3.0-or-later"
     ],
