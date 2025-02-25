@@ -20,7 +20,7 @@
 use Cru\Psr14EventList\Backend\Controller\AdminModuleController;
 
 return [
-    'web_examples' => [
+    'psr14_event_list' => [
         'parent' => 'system',
         'position' => ['top'],
         'access' => 'admin',
