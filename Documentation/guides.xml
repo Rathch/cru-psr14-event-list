@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- See  https://docs.typo3.org/permalink/h2document:guides-xml for documentation on this file-->
+<guides
+    xmlns="https://www.phpdoc.org/guides"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://www.phpdoc.org/guides vendor/phpdocumentor/guides-cli/resources/schema/guides.xsd"
+    input-format="md"
+    index-name="Index"
+    automatic-menu="true"
+    >
+    <project
+        title="cru/psr14-event-list"
+        copyright="The contributors"
+    />
+    <extension
+        class="\T3Docs\Typo3DocsTheme\DependencyInjection\Typo3DocsThemeExtension"
+        edit-on-github="Rathch/cru-psr14-event-list"
+        edit-on-github-branch="main"
+        interlink-shortcode="cru/psr14-event-list"
+        project-home="https://extensions.typo3.org/package/psr14_event_list"
+        project-issues="https://github.com/Rathch/cru-psr14-event-list/issues"
+        project-repository="https://github.com/Rathch/cru-psr14-event-list"
+        typo3-core-preferred="stable"
+    />
+</guides>
