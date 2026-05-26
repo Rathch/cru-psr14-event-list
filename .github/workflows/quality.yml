@@ -1,0 +1,123 @@
+# TYPO3 extension quality gates: dependency resolution against supported TYPO3 LTS lines,
+# Composer validation, coding style, static analysis, PHPMD, JSON/YAML linting and workflow linting.
+name: Quality
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  schedule:
+    - cron: "20 3 * * *"
+
+concurrency:
+  group: quality-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  workflow-lint:
+    name: Workflow lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: actionlint
+        uses: rhysd/actionlint@v1.7.12
+
+  typo3-quality:
+    name: TYPO3 ${{ matrix.typo3 }} / PHP ${{ matrix.php }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - typo3: "12.4.*"
+            php: "8.1"
+          - typo3: "12.4.*"
+            php: "8.3"
+          - typo3: "13.4.*"
+            php: "8.2"
+          - typo3: "13.4.*"
+            php: "8.4"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: ctype, fileinfo, filter, intl, json, mbstring, openssl, pdo_sqlite, sqlite3, tokenizer, xml, zip
+          coverage: none
+          tools: composer:v2
+
+      - name: Get Composer cache directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> "$GITHUB_OUTPUT"
+
+      - name: Cache Composer downloads
+        uses: actions/cache@v5
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ matrix.php }}-typo3-${{ matrix.typo3 }}-${{ hashFiles('composer.json') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-${{ matrix.php }}-typo3-${{ matrix.typo3 }}-
+            ${{ runner.os }}-composer-
+
+      - name: Cache Composer vendor directory
+        uses: actions/cache@v5
+        with:
+          path: .composer/vendor
+          key: ${{ runner.os }}-vendor-${{ matrix.php }}-typo3-${{ matrix.typo3 }}-${{ hashFiles('composer.json') }}
+          restore-keys: |
+            ${{ runner.os }}-vendor-${{ matrix.php }}-typo3-${{ matrix.typo3 }}-
+
+      - name: Install dependencies for TYPO3 ${{ matrix.typo3 }}
+        env:
+          TYPO3_VERSION: ${{ matrix.typo3 }}
+        run: |
+          composer update \
+            --with "typo3/cms-backend:${TYPO3_VERSION}" \
+            --with "typo3/cms-core:${TYPO3_VERSION}" \
+            --with "typo3/cms-lowlevel:${TYPO3_VERSION}" \
+            --with-all-dependencies \
+            --no-interaction \
+            --no-progress \
+            --prefer-dist
+
+      - name: Composer validation
+        run: |
+          composer run-script composer:validate
+          composer run-script composer:normalize
+          composer run-script composer:psr-verify
+
+      - name: Lint JSON and YAML
+        run: |
+          composer run-script json:lint
+          composer run-script yaml:lint
+
+      - name: Coding style
+        run: composer run-script phpcs:analyze
+
+      - name: Static analysis
+        run: composer run-script phpstan:analyze
+
+      - name: Mess detection
+        run: composer run-script phpmd:analyze
+
+      - name: TypoScript lint
+        run: |
+          if [ -d Configuration/TypoScript ]; then
+            composer run-script typoscript:lint
+          else
+            echo "No Configuration/TypoScript directory found, skipping TypoScript lint."
+          fi
+
+      - name: Composer audit
+        run: composer audit --no-interaction --abandoned=ignore

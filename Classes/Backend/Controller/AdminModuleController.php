@@ -1,4 +1,5 @@
 <?php
+
 // SPDX-FileCopyrightText: 2025 Christian Rath-Ulrich, Garvin Hicking
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
@@ -76,11 +77,11 @@ final class AdminModuleController
             $isActive = ($currentUri->getPath() === $uri->getPath());
             $menuItem = $menu->makeMenuItem()
                             ->setTitle($menuItemConfig['label'])
-                            ->setHref($uri)
+                            ->setHref((string)$uri)
                             ->setActive($isActive);
             $menu->addMenuItem($menuItem);
         }
-        
+
         $moduleTemplate->getDocHeaderComponent()->getMenuRegistry()->addMenu($menu);
     }
 

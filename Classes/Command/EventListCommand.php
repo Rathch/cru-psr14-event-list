@@ -19,7 +19,6 @@
 
 declare(strict_types=1);
 
-
 namespace Cru\Psr14EventList\Command;
 
 use Cru\Psr14EventList\Service\ProvideEventListService;
