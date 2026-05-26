@@ -1,0 +1,14 @@
+{
+    "name": "cru/secondary-event-provider-fixture",
+    "type": "typo3-cms-extension",
+    "autoload": {
+        "psr-4": {
+            "Cru\\Psr14EventList\\Tests\\Functional\\Fixtures\\Extensions\\SecondaryEventProvider\\": "Classes/"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "secondary_event_provider"
+        }
+    }
+}
