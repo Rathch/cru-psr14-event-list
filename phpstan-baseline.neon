@@ -21,11 +21,6 @@ parameters:
 			path: Classes/Backend/Controller/AdminModuleController.php
 
 		-
-			message: "#^Parameter \\#1 \\$href of method TYPO3\\\\CMS\\\\Backend\\\\Template\\\\Components\\\\Menu\\\\MenuItem\\:\\:setHref\\(\\) expects string, Psr\\\\Http\\\\Message\\\\UriInterface given\\.$#"
-			count: 1
-			path: Classes/Backend/Controller/AdminModuleController.php
-
-		-
 			message: "#^Parameter \\#1 \\$tree of method Cru\\\\Psr14EventList\\\\Backend\\\\Controller\\\\AdminModuleController\\:\\:renderTree\\(\\) expects array\\|ArrayObject, iterable given\\.$#"
 			count: 1
 			path: Classes/Backend/Controller/AdminModuleController.php

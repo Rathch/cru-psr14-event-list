@@ -83,6 +83,7 @@ jobs:
           TYPO3_VERSION: ${{ matrix.typo3 }}
         run: |
           composer update \
+            --with "typo3/cms-backend:${TYPO3_VERSION}" \
             --with "typo3/cms-core:${TYPO3_VERSION}" \
             --with "typo3/cms-lowlevel:${TYPO3_VERSION}" \
             --with-all-dependencies \

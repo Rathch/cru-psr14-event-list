@@ -76,7 +76,7 @@ final class AdminModuleController
             $isActive = ($currentUri->getPath() === $uri->getPath());
             $menuItem = $menu->makeMenuItem()
                             ->setTitle($menuItemConfig['label'])
-                            ->setHref($uri)
+                            ->setHref((string)$uri)
                             ->setActive($isActive);
             $menu->addMenuItem($menuItem);
         }
