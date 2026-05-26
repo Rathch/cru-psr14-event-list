@@ -5,5 +5,6 @@ $config->getFinder()
     ->exclude('Build')
     ->exclude('.composer')
     ->exclude('ManualBuild')
+    ->exclude('public')
     ->in(__DIR__ );
 return $config;
