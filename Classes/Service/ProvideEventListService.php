@@ -28,11 +28,11 @@ use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Package\PackageManager;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-final readonly class ProvideEventListService
+final class ProvideEventListService
 {
     public function __construct(
-        private PackageManager $packageManager,
-        private Typo3Version $typo3Version,
+        private readonly PackageManager $packageManager,
+        private readonly Typo3Version $typo3Version,
     ) {}
 
     public function getConfiguration(bool $useCache = true, bool $fetchDocs = true, ?OutputInterface $cliOutput = null): array
