@@ -47,10 +47,10 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Cru\\Psr14EventList\\Tests\\Functional\\": "Tests/Functional/",
             "Cru\\Psr14EventList\\Tests\\Functional\\Backend\\": "Tests/Functional/Backend/",
             "Cru\\Psr14EventList\\Tests\\Functional\\Command\\": "Tests/Functional/Command/",
-            "Cru\\Psr14EventList\\Tests\\Functional\\Service\\": "Tests/Functional/Service/"
+            "Cru\\Psr14EventList\\Tests\\Functional\\Service\\": "Tests/Functional/Service/",
+            "Cru\\Psr14EventList\\Tests\\Functional\\Support\\": "Tests/Functional/Support/"
         }
     },
     "config": {

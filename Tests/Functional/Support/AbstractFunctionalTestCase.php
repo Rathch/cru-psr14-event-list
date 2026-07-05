@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cru\Psr14EventList\Tests\Functional;
+namespace Cru\Psr14EventList\Tests\Functional\Support;
 
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase as Typo3FunctionalTestCase;
 

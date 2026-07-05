@@ -6,7 +6,7 @@ namespace Cru\Psr14EventList\Tests\Functional\Command;
 
 use Cru\Psr14EventList\Command\EventListCommand;
 use Cru\Psr14EventList\Service\ProvideEventListService;
-use Cru\Psr14EventList\Tests\Functional\AbstractFunctionalTestCase;
+use Cru\Psr14EventList\Tests\Functional\Support\AbstractFunctionalTestCase;
 use Cru\Psr14EventList\Tests\Functional\Fixtures\Extensions\EventProvider\Event\ApplicationReadyEvent;
 use Cru\Psr14EventList\Tests\Functional\Fixtures\Extensions\SecondaryEventProvider\Event\SecondaryFixtureEvent;
 use PHPUnit\Framework\Attributes\Test;

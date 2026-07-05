@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Cru\Psr14EventList\Tests\Functional\Backend;
 
 use Cru\Psr14EventList\Backend\Controller\AdminModuleController;
-use Cru\Psr14EventList\Tests\Functional\AbstractFunctionalTestCase;
+use Cru\Psr14EventList\Tests\Functional\Support\AbstractFunctionalTestCase;
 use PHPUnit\Framework\Attributes\Test;
 
 final class AdminModuleControllerTest extends AbstractFunctionalTestCase
