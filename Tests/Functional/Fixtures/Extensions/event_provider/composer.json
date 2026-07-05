@@ -1,6 +1,10 @@
 {
     "name": "cru/event-provider-fixture",
     "type": "typo3-cms-extension",
+    "require": {
+        "php": "^8.1",
+        "typo3/cms-core": "^12.4 || ^13.4 || ^14.3"
+    },
     "autoload": {
         "psr-4": {
             "Cru\\Psr14EventList\\Tests\\Functional\\Fixtures\\Extensions\\EventProvider\\": "Classes/"
@@ -8,7 +12,11 @@
     },
     "extra": {
         "typo3/cms": {
-            "extension-key": "event_provider"
+            "extension-key": "event_provider",
+            "version": "1.0.0",
+            "Package": {
+                "providesPackages": {}
+            }
         }
     }
 }

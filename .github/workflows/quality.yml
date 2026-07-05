@@ -32,6 +32,9 @@ jobs:
     name: TYPO3 ${{ matrix.typo3 }} / PHP ${{ matrix.php }}
     runs-on: ubuntu-latest
 
+    env:
+      TYPO3_SKIP_ASSET_PUBLISH: '1'
+
     strategy:
       fail-fast: false
       matrix:
@@ -69,14 +72,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-composer-${{ matrix.php }}-typo3-${{ matrix.typo3 }}-
             ${{ runner.os }}-composer-
-
-      - name: Cache Composer vendor directory
-        uses: actions/cache@v5
-        with:
-          path: .composer/vendor
-          key: ${{ runner.os }}-vendor-${{ matrix.php }}-typo3-${{ matrix.typo3 }}-${{ hashFiles('composer.json') }}
-          restore-keys: |
-            ${{ runner.os }}-vendor-${{ matrix.php }}-typo3-${{ matrix.typo3 }}-
 
       - name: Install dependencies for TYPO3 ${{ matrix.typo3 }}
         env:
@@ -121,3 +116,66 @@ jobs:
 
       - name: Composer audit
         run: composer audit --no-interaction --abandoned=ignore
+
+  typo3-functional:
+    name: Functional / TYPO3 ${{ matrix.typo3 }} / PHP ${{ matrix.php }}
+    runs-on: ubuntu-latest
+
+    env:
+      TYPO3_SKIP_ASSET_PUBLISH: '1'
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - typo3: "13.4.*"
+            php: "8.2"
+          - typo3: "13.4.*"
+            php: "8.4"
+          - typo3: "14.3.*"
+            php: "8.2"
+          - typo3: "14.3.*"
+            php: "8.4"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: ctype, fileinfo, filter, intl, json, mbstring, openssl, pdo_sqlite, sqlite3, tokenizer, xml, zip
+          coverage: none
+          tools: composer:v2
+
+      - name: Get Composer cache directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> "$GITHUB_OUTPUT"
+
+      - name: Cache Composer downloads
+        uses: actions/cache@v5
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-functional-${{ matrix.php }}-typo3-${{ matrix.typo3 }}-${{ hashFiles('composer.json') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-functional-${{ matrix.php }}-typo3-${{ matrix.typo3 }}-
+            ${{ runner.os }}-composer-functional-
+
+      - name: Install dependencies for TYPO3 ${{ matrix.typo3 }}
+        env:
+          TYPO3_VERSION: ${{ matrix.typo3 }}
+        run: |
+          composer update \
+            --with "typo3/cms-backend:${TYPO3_VERSION}" \
+            --with "typo3/cms-core:${TYPO3_VERSION}" \
+            --with "typo3/cms-lowlevel:${TYPO3_VERSION}" \
+            --with-all-dependencies \
+            --no-interaction \
+            --no-progress \
+            --prefer-dist
+
+      - name: Functional tests
+        env:
+          typo3DatabaseDriver: pdo_sqlite
+        run: composer run-script phpunit:functional

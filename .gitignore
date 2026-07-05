@@ -1,4 +1,7 @@
 .composer
+.phpunit.cache
 composer.lock
 public
+typo3temp/
+var/
 vendor
