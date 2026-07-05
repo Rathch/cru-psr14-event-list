@@ -39,10 +39,6 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - typo3: "12.4.*"
-            php: "8.1"
-          - typo3: "12.4.*"
-            php: "8.3"
           - typo3: "13.4.*"
             php: "8.2"
           - typo3: "13.4.*"
@@ -132,10 +128,6 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - typo3: "12.4.*"
-            php: "8.1"
-          - typo3: "12.4.*"
-            php: "8.3"
           - typo3: "13.4.*"
             php: "8.2"
           - typo3: "13.4.*"
