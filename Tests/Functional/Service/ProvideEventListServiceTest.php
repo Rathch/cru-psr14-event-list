@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Cru\Psr14EventList\Tests\Functional\Service;
 
 use Cru\Psr14EventList\Service\ProvideEventListService;
-use Cru\Psr14EventList\Tests\Functional\Support\AbstractFunctionalTestCase;
 use Cru\Psr14EventList\Tests\Functional\Fixtures\Extensions\EventProvider\Event\AbstractFixtureEvent;
 use Cru\Psr14EventList\Tests\Functional\Fixtures\Extensions\EventProvider\Event\ApplicationReadyEvent;
 use Cru\Psr14EventList\Tests\Functional\Fixtures\Extensions\EventProvider\Event\SubFolder\NestedFixtureEvent;
 use Cru\Psr14EventList\Tests\Functional\Fixtures\Extensions\SecondaryEventProvider\Event\SecondaryFixtureEvent;
+use Cru\Psr14EventList\Tests\Functional\Support\AbstractFunctionalTestCase;
 use PHPUnit\Framework\Attributes\Test;
 use Symfony\Component\Console\Output\BufferedOutput;
 use Symfony\Component\Console\Output\OutputInterface;
