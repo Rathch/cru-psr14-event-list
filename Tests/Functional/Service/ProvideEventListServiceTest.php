@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Cru\Psr14EventList\Tests\Functional\Service;
 
 use Cru\Psr14EventList\Service\ProvideEventListService;
+use Cru\Psr14EventList\Tests\Functional\AbstractFunctionalTestCase;
 use Cru\Psr14EventList\Tests\Functional\Fixtures\Extensions\EventProvider\Event\AbstractFixtureEvent;
 use Cru\Psr14EventList\Tests\Functional\Fixtures\Extensions\EventProvider\Event\ApplicationReadyEvent;
 use Cru\Psr14EventList\Tests\Functional\Fixtures\Extensions\EventProvider\Event\SubFolder\NestedFixtureEvent;
@@ -16,9 +17,8 @@ use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Package\PackageManager;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
-final class ProvideEventListServiceTest extends FunctionalTestCase
+final class ProvideEventListServiceTest extends AbstractFunctionalTestCase
 {
     protected array $testExtensionsToLoad = [
         'typo3conf/ext/psr14_event_list',

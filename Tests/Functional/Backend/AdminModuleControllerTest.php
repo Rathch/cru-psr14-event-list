@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Cru\Psr14EventList\Tests\Functional\Backend;
 
 use Cru\Psr14EventList\Backend\Controller\AdminModuleController;
+use Cru\Psr14EventList\Tests\Functional\AbstractFunctionalTestCase;
 use PHPUnit\Framework\Attributes\Test;
-use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
-final class AdminModuleControllerTest extends FunctionalTestCase
+final class AdminModuleControllerTest extends AbstractFunctionalTestCase
 {
     protected array $testExtensionsToLoad = [
         'typo3conf/ext/psr14_event_list',

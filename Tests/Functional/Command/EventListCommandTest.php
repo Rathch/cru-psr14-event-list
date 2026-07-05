@@ -6,6 +6,7 @@ namespace Cru\Psr14EventList\Tests\Functional\Command;
 
 use Cru\Psr14EventList\Command\EventListCommand;
 use Cru\Psr14EventList\Service\ProvideEventListService;
+use Cru\Psr14EventList\Tests\Functional\AbstractFunctionalTestCase;
 use Cru\Psr14EventList\Tests\Functional\Fixtures\Extensions\EventProvider\Event\ApplicationReadyEvent;
 use Cru\Psr14EventList\Tests\Functional\Fixtures\Extensions\SecondaryEventProvider\Event\SecondaryFixtureEvent;
 use PHPUnit\Framework\Attributes\Test;
@@ -15,9 +16,8 @@ use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Package\PackageManager;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
-final class EventListCommandTest extends FunctionalTestCase
+final class EventListCommandTest extends AbstractFunctionalTestCase
 {
     protected array $testExtensionsToLoad = [
         'typo3conf/ext/psr14_event_list',
